@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+source=$1
+target=$2
+query="${*:3}"
+edited_query="${query// /\_}"
+url="https://translate.googleapis.com/translate_a/single?client=gtx&sl=${source}&tl=${target}&dt=t&q=${edited_query}"
+ua='Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36'
+response=$(curl -sA "${ua}" "${url}")
+echo "${response//_/\ }" | sed 's/","/\n/g' | sed -E 's/\[|\]|"//g' | head -1
