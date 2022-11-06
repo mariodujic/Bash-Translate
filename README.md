@@ -8,7 +8,7 @@
 ## Install
 
 ```
-https://github.com/mariodujic/Bash-Translate
+git clone https://github.com/mariodujic/Bash-Translate
 cd Bash-Translate
 sudo bash installer.sh
 ```
