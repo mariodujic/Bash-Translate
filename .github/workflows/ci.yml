@@ -14,3 +14,11 @@ jobs:
               echo "Binary could not be installed."
               throw "Error: File /usr/local/bin/pages does not exists."
           fi
+      - name: Verify API validity
+        run: |
+          x=$(translate en de Hello World)
+          if [[ "$x" == "Hallo Welt" ]]; then
+            echo "API valid."
+          else
+            throw "API no longer valid."
+          fi
