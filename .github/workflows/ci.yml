@@ -1,0 +1,16 @@
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Verify installation
+        run: |
+          echo "y" | sudo bash installer.sh
+          if [ -f "/usr/local/bin/translate" ] 
+          then
+              echo "Binary installed successfully."
+          else
+              echo "Binary could not be installed."
+              throw "Error: File /usr/local/bin/pages does not exists."
+          fi
